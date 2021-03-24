@@ -1,7 +1,46 @@
+filepath: ""
+environments:
+  default:
+    values:
+    - jx-values.yaml
 namespace: jx-observability
+repositories:
+- name: jx3
+  url: https://storage.googleapis.com/jenkinsxio/charts
+- name: grafana
+  url: https://grafana.github.io/helm-charts
+- name: prometheus-community
+  url: https://prometheus-community.github.io/helm-charts
 releases:
 - chart: jx3/grafana-dashboard
+  version: 0.1.0
+  name: grafana-dashboard
+  values:
+  - ../../versionStream/charts/jx3/grafana-dashboard/values.yaml.gotmpl
+  - jx-values.yaml
 - chart: grafana/loki
+  version: 2.5.0
+  name: loki
+  values:
+  - ../../versionStream/charts/grafana/loki/values.yaml
+  - jx-values.yaml
 - chart: grafana/promtail
+  version: 3.5.0
+  name: promtail
+  values:
+  - ../../versionStream/charts/grafana/promtail/values.yaml
+  - jx-values.yaml
 - chart: grafana/grafana
+  version: 6.6.3
+  name: grafana
+  values:
+  - ../../versionStream/charts/grafana/grafana/values.yaml.gotmpl
+  - jx-values.yaml
 - chart: prometheus-community/prometheus
+  version: 13.6.0
+  name: prometheus
+  values:
+  - ../../versionStream/charts/prometheus-community/prometheus/values.yaml
+  - jx-values.yaml
+templates: {}
+renderedvalues: {}
