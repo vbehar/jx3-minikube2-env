@@ -1,0 +1,7 @@
+namespace: jx-observability
+releases:
+- chart: jx3/grafana-dashboard
+- chart: grafana/loki
+- chart: grafana/promtail
+- chart: grafana/grafana
+- chart: prometheus-community/prometheus
