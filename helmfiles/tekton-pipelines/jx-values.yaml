@@ -29,6 +29,7 @@ jxRequirements:
     gitName: github
     gitServer: https://github.com
     provider: minikube
+    registry: 10.108.28.177
   environments:
   - key: dev
     owner: vbehar
