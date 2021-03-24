@@ -71,6 +71,39 @@
 	      <td></td>
 	    </tr>
     <tr>
+		      <td colspan='4'><h3>jx-observability</h3></td>
+		    </tr>
+	    <tr>
+	      <td><a href='' title='A helm chart for packaging Grafana dashboards'> <img src='https://avatars.githubusercontent.com/u/7195757' width='24px' height='24px'> grafana-dashboard </a></td>
+	      <td>0.1.0</td>
+	      <td></td>
+	      <td></td>
+	    </tr>
+    <tr>
+	      <td><a href='https://grafana.com/loki' title='Loki: like Prometheus, but for logs.'> <img src='https://raw.githubusercontent.com/grafana/loki/master/docs/sources/logo.png' width='24px' height='24px'> loki </a></td>
+	      <td>2.5.0</td>
+	      <td></td>
+	      <td><a href='https://grafana.com/loki'>source</a></td>
+	    </tr>
+    <tr>
+	      <td><a href='https://grafana.com/loki' title='Promtail is an agent which ships the contents of local logs to a Loki instance'> <img src='https://raw.githubusercontent.com/grafana/loki/master/docs/sources/logo.png' width='24px' height='24px'> promtail </a></td>
+	      <td>3.5.0</td>
+	      <td></td>
+	      <td><a href='https://grafana.com/loki'>source</a></td>
+	    </tr>
+    <tr>
+	      <td><a href='https://grafana.net' title='The leading tool for querying and visualizing time series and metrics.'> <img src='https://raw.githubusercontent.com/grafana/grafana/master/public/img/logo_transparent_400x.png' width='24px' height='24px'> grafana </a></td>
+	      <td>6.6.3</td>
+	      <td></td>
+	      <td><a href='https://grafana.net'>source</a></td>
+	    </tr>
+    <tr>
+	      <td><a href='https://prometheus.io/' title='Prometheus is a monitoring system and time series database.'> <img src='https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png' width='24px' height='24px'> prometheus </a></td>
+	      <td>13.6.0</td>
+	      <td></td>
+	      <td><a href='https://prometheus.io/'>source</a></td>
+	    </tr>
+    <tr>
 		      <td colspan='4'><h3>tekton-pipelines</h3></td>
 		    </tr>
 	    <tr>
