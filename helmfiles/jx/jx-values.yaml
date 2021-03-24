@@ -31,10 +31,12 @@ jxRequirements:
     provider: minikube
   environments:
   - key: dev
+    owner: vbehar
+    repository: jx3-minikube2-env
   - key: staging
   - key: production
   ingress:
-    domain: change.me
+    domain: 192.168.64.8.nip.io
     externalDNS: false
     kind: ingress
     namespaceSubDomain: -jx.
@@ -42,6 +44,8 @@ jxRequirements:
       email: ""
       enabled: false
       production: false
+  pipelineUser:
+    username: vbehar
   repository: bucketrepo
   secretStorage: local
   vault: {}

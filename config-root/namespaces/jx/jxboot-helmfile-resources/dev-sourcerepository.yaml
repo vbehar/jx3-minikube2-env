@@ -1,0 +1,21 @@
+# Source: jxboot-helmfile-resources/templates/repositories.yaml
+apiVersion: jenkins.io/v1
+kind: SourceRepository
+metadata:
+  name: "dev"
+  labels:
+    jenkins.io/gitSync: "false"
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+  namespace: jx
+spec:
+  description: "the git repository for the Dev environment"
+  provider: "https://github.com"
+  providerKind: 'github'
+  providerName: 'github'
+  org: "vbehar"
+  repo: "jx3-minikube2-env"
+  httpCloneURL: "https://github.com/vbehar/jx3-minikube2-env.git"
+  url: "https://github.com/vbehar/jx3-minikube2-env.git"
+  scheduler:
+    kind: Scheduler
+    name: "in-repo"
