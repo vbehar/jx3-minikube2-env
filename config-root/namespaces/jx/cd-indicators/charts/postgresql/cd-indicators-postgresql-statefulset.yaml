@@ -52,7 +52,7 @@ spec:
         fsGroup: 1001
       containers:
         - name: cd-indicators-postgresql
-          image: docker.io/bitnami/postgresql:0.0.4
+          image: docker.io/bitnami/postgresql:13.1.0-debian-10-r38
           imagePullPolicy: "IfNotPresent"
           resources:
             requests:
