@@ -1,0 +1,7 @@
+postgresql:
+  existingSecret: cd-indicators-postgresql
+secrets:
+  postgres:
+    password:
+      secretKeyRef:
+        name: cd-indicators-postgresql
