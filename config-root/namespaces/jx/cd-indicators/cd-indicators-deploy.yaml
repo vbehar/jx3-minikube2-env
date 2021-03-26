@@ -1,0 +1,75 @@
+# Source: cd-indicators/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cd-indicators
+  labels:
+    app.kubernetes.io/name: cd-indicators
+    app.kubernetes.io/instance: "cd-indicators"
+    helm.sh/chart: cd-indicators-0.0.4
+    app.kubernetes.io/version: "latest"
+    app.kubernetes.io/managed-by: "Helm"
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+  namespace: jx
+  annotations:
+    wave.pusher.com/update-on-config-change: 'true'
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: cd-indicators
+      app.kubernetes.io/instance: "cd-indicators"
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: cd-indicators
+        app.kubernetes.io/instance: "cd-indicators"
+        helm.sh/chart: cd-indicators-0.0.4
+        app.kubernetes.io/version: "latest"
+        app.kubernetes.io/managed-by: "Helm"
+    spec:
+      containers:
+        - name: cd-indicators
+          image: "gcr.io/jenkinsxio/cd-indicators:0.0.4"
+          args:
+            - --postgres-uri=postgres://cd-indicators-postgresql:5432/indicators?
+            - --resync-interval=1h
+            - --log-level=INFO
+            - --log-level-db=WARN
+          env:
+            - name: XDG_CONFIG_HOME
+              value: /home/jenkins
+            - name: LIGHTHOUSE_HMAC_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: hmac
+                  name: lighthouse-hmac-token
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: cd-indicators-postgresql
+                  key: postgresql-password
+            - name: PGUSER
+              value: "postgres"
+          ports:
+            - name: http
+              containerPort: 8080
+          livenessProbe:
+            tcpSocket:
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+          resources:
+            limits:
+              cpu: "1"
+              memory: 512M
+            requests:
+              cpu: "0.2"
+              memory: 256M
+      securityContext:
+        fsGroup: 1000
+      serviceAccountName: cd-indicators
+      enableServiceLinks: false
