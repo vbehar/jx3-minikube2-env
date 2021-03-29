@@ -1,0 +1,20 @@
+# Source: cd-indicators/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: cd-indicators
+  labels:
+    app.kubernetes.io/name: cd-indicators
+    app.kubernetes.io/instance: "cd-indicators"
+    helm.sh/chart: cd-indicators-0.0.8
+    app.kubernetes.io/version: "latest"
+    app.kubernetes.io/managed-by: "Helm"
+    gitops.jenkins-x.io/pipeline: 'cluster'
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cd-indicators
+subjects:
+  - kind: ServiceAccount
+    name: cd-indicators
+    namespace: jx
