@@ -67,7 +67,7 @@ releases:
   values:
   - jx-values.yaml
 - chart: jx3/cd-indicators
-  version: 0.0.6
+  version: 0.0.7
   name: cd-indicators
   values:
   - ../../versionStream/charts/jx3/cd-indicators/values.yaml
