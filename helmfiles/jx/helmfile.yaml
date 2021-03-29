@@ -66,5 +66,11 @@ releases:
   name: local-external-secrets
   values:
   - jx-values.yaml
+- chart: jx3/cd-indicators
+  version: 0.0.6
+  name: cd-indicators
+  values:
+  - ../../versionStream/charts/jx3/cd-indicators/values.yaml
+  - jx-values.yaml
 templates: {}
 renderedvalues: {}
