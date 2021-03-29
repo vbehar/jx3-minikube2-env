@@ -1,8 +1,9 @@
 postgresql:
   image:
     tag: 13.1.0-debian-10-r38
+  existingSecret: cd-indicators-postgresql-password
 secrets:
   postgres:
     password:
       secretKeyRef:
-        name: cd-indicators-postgresql
+        name: cd-indicators-postgresql-password
