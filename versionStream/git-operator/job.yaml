@@ -38,6 +38,8 @@ spec:
         env:
         - name: XDG_CONFIG_HOME
           value: /workspace/xdg_config
+        - name: JX_LOG_LEVEL
+          value: debug
         envFrom:
         - secretRef:
             name: jx-boot-job-env-vars
