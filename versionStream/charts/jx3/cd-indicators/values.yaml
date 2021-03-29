@@ -1,8 +1,6 @@
 postgresql:
   image:
     tag: 13.1.0-debian-10-r38
-  persistence:
-    enabled: false
   existingSecret: cd-indicators-postgresql-password
 secrets:
   postgres:
