@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: cd-indicators
     app.kubernetes.io/instance: "cd-indicators"
-    helm.sh/chart: cd-indicators-0.0.6
+    helm.sh/chart: cd-indicators-0.0.7
     app.kubernetes.io/version: "latest"
     app.kubernetes.io/managed-by: "Helm"
     gitops.jenkins-x.io/pipeline: 'namespaces'
@@ -25,13 +25,13 @@ spec:
       labels:
         app.kubernetes.io/name: cd-indicators
         app.kubernetes.io/instance: "cd-indicators"
-        helm.sh/chart: cd-indicators-0.0.6
+        helm.sh/chart: cd-indicators-0.0.7
         app.kubernetes.io/version: "latest"
         app.kubernetes.io/managed-by: "Helm"
     spec:
       containers:
         - name: cd-indicators
-          image: "gcr.io/jenkinsxio/cd-indicators:0.0.6"
+          image: "gcr.io/jenkinsxio/cd-indicators:0.0.7"
           args:
             - --postgres-uri=postgres://cd-indicators-postgresql:5432/indicators?
             - --resync-interval=1h

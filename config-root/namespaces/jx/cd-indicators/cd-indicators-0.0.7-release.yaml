@@ -2,9 +2,9 @@
 apiVersion: jenkins.io/v1
 kind: Release
 metadata:
-  creationTimestamp: "2021-03-29T09:03:25Z"
+  creationTimestamp: "2021-03-29T12:02:22Z"
   deletionTimestamp: null
-  name: 'cd-indicators-0.0.6'
+  name: 'cd-indicators-0.0.7'
   namespace: jx
   labels:
     gitops.jenkins-x.io/pipeline: 'namespaces'
@@ -18,11 +18,8 @@ spec:
         email: v.behar@free.fr
         name: Vincent Behar
       message: |
-        fix: remove default postgres tag
-
-        because it gets set to the cd-indicators version at release time
-        we'll set this in the versionstream values instead
-      sha: 322da38820049b5517712ef986775762236bbfb7
+        fix: chart
+      sha: 820366cd3778d97d84f7ae2dcd0fac11c3bad424
     - author:
         email: v.behar@free.fr
         name: Vincent Behar
@@ -31,13 +28,14 @@ spec:
         email: v.behar@free.fr
         name: Vincent Behar
       message: |
-        chore: grafana postgres datasource should be configurable
+        fix: remove default postgres tag
 
-        from the chart values
-      sha: 35f49480a3e42050b881aac6b7fe47696cb6f4ad
+        because it gets set to the cd-indicators version at release time
+        we'll set this in the versionstream values instead
+      sha: 322da38820049b5517712ef986775762236bbfb7
   gitHttpUrl: https://github.com/jenkins-x/cd-indicators
   gitOwner: jenkins-x
   gitRepository: cd-indicators
   name: 'cd-indicators'
-  version: 0.0.6
+  version: 0.0.7
 status: {}
