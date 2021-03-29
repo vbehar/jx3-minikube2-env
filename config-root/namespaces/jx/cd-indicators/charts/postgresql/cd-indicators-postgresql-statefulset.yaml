@@ -125,20 +125,10 @@ spec:
           volumeMounts:
             - name: dshm
               mountPath: /dev/shm
-            - name: data
-              mountPath: /bitnami/postgresql
-              subPath:
       volumes:
         - name: dshm
           emptyDir:
             medium: Memory
             sizeLimit: 1Gi
-  volumeClaimTemplates:
-    - metadata:
-        name: data
-      spec:
-        accessModes:
-          - "ReadWriteOnce"
-        resources:
-          requests:
-            storage: "8Gi"
+        - name: data
+          emptyDir: {}
