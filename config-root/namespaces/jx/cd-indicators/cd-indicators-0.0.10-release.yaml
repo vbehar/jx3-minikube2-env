@@ -2,9 +2,9 @@
 apiVersion: jenkins.io/v1
 kind: Release
 metadata:
-  creationTimestamp: "2021-03-29T13:34:54Z"
+  creationTimestamp: "2021-03-30T14:23:25Z"
   deletionTimestamp: null
-  name: 'cd-indicators-0.0.9'
+  name: 'cd-indicators-0.0.10'
   namespace: jx
   labels:
     gitops.jenkins-x.io/pipeline: 'namespaces'
@@ -18,8 +18,8 @@ spec:
         email: v.behar@free.fr
         name: Vincent Behar
       message: |
-        fix: always trim the version prefix
-      sha: b8f585b6cbd368e9edd488f0e0ef41932c39860f
+        chore: add dashboards
+      sha: 38423761b9f2a4750fd617a0c864f389e3ce0988
     - author:
         email: v.behar@free.fr
         name: Vincent Behar
@@ -28,11 +28,11 @@ spec:
         email: v.behar@free.fr
         name: Vincent Behar
       message: |
-        chore: add a first (home) dashboard
-      sha: 87cb25f2d787b5789e8174ac8d3e0ab087139fac
+        fix: always trim the version prefix
+      sha: b8f585b6cbd368e9edd488f0e0ef41932c39860f
   gitHttpUrl: https://github.com/jenkins-x/cd-indicators
   gitOwner: jenkins-x
   gitRepository: cd-indicators
   name: 'cd-indicators'
-  version: 0.0.9
+  version: 0.0.10
 status: {}

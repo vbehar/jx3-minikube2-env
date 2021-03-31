@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: cd-indicators
     app.kubernetes.io/instance: "cd-indicators"
-    helm.sh/chart: cd-indicators-0.0.9
+    helm.sh/chart: cd-indicators-0.0.10
     app.kubernetes.io/version: "latest"
     app.kubernetes.io/managed-by: "Helm"
     gitops.jenkins-x.io/pipeline: 'namespaces'
