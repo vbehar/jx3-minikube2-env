@@ -126,7 +126,7 @@
     resourcePath: config-root/namespaces/jx/cd-indicators
     sources:
     - https://github.com/jenkins-x/cd-indicators
-    version: 0.0.9
+    version: 0.0.10
 - namespace: jx-observability
   path: helmfiles/jx-observability/helmfile.yaml
   releases:
