@@ -1,0 +1,30 @@
+# Source: osiris/templates/proxy-injector-webhook-config.yaml
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: osiris-proxy-injector
+  labels:
+    app.kubernetes.io/name: osiris-proxy-injector
+    helm.sh/chart: osiris-0.0.48
+    app.kubernetes.io/instance: osiris
+    app.kubernetes.io/managed-by: Helm
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+  namespace: osiris-system
+webhooks:
+  - name: proxy-injector.osiris.dm.gg
+    clientConfig:
+      service:
+        namespace: osiris-system
+        name: osiris-proxy-injector
+        path: "/mutate"
+      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNVENDQWhtZ0F3SUJBZ0lRSWx6NTNMNi9sdE8xZGszVTNiSlV6VEFOQmdrcWhraUc5dzBCQVFzRkFEQWoKTVNFd0h3WURWUVFERXhodmMybHlhWE10Y0hKdmVIa3RhVzVxWldOMGIzSXRZMkV3SGhjTk1qRXdNek14TURndwpPVFF6V2hjTk16RXdNekk1TURnd09UUXpXakFqTVNFd0h3WURWUVFERXhodmMybHlhWE10Y0hKdmVIa3RhVzVxClpXTjBiM0l0WTJFd2dnRWlNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUURJcEpiQ2dZdUMKd2I3eE5BdnBCSVVhNjh6S3JLc2dKVmpCV24vQW9FTXRDTzhGY1ZwZUFRMmJ2SnZKeTJXK3Y4c0U3QnFFUmpNcQpLem56dk1GZ3lKY0ttdDlUTkhpeHB1QVZqS0pTUWpNaVlTd25UUTBDTjNCbG9DK0dwN1FGMlNrSjhRa1ZYMkxwCjMvUTNMcHBYRE9UWEVPbXhORlFNWCtyMi85dmVSQmZaSWlQT3RrR29LU3pEcDVCVzlhY0o5SlBDaUZ4NHRacUwKY081WURHRGVVTUxFdjRRYWd5Qlh1cVQyT3JQWGU1ZVRQSThVNnpkaGtTVkFZQWcvMUQxdWd4MXhvb0tMc3EycQo4ZzBhdU9QdUFQLzJ0bG1yQ01EY1BsR2RyOXhiblhITWJlcDFSM0UyQ1d0eE5GNDArZ2VEQkxoUkdMNCtVbGszCmRTam5mTHlMQkdrSkFnTUJBQUdqWVRCZk1BNEdBMVVkRHdFQi93UUVBd0lDcERBZEJnTlZIU1VFRmpBVUJnZ3IKQmdFRkJRY0RBUVlJS3dZQkJRVUhBd0l3RHdZRFZSMFRBUUgvQkFVd0F3RUIvekFkQmdOVkhRNEVGZ1FVRVF5WApIZlJKRVlTbHMxNTgwMGd0Y3RxdnZmb3dEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBQ25LeW1ZNm9EaHRDSUJTCmNKOUFNL0NPc3hBaWFDRUFORmRoZG4zdVdKQllPOWhhcTNaWFBMLzVZQjBIcjVYZ3VkS0hKcC9FeUNFL3NzUVgKL1g3WVVvUnVLVnJPeTdZS1RJUWZ5aTVXbzQvK2o2VUR2UlpTeDUrNDJWVG1QcEdObXQ4eitSdkFyZUtFSHVHegpzVFZ3Z2dLT0FncE1Cdzhla05vOUV3SkRaRkMvTE5JWTVTQTJOd0NKVk5MRWx2S2t5VUJzZjdZWm5qOUcwUTh2Cldnb1JoTVAzSzFQYUlvYWZJR1Y5REZ2dEJLTlBqNEVVSXQ1SlZBWi9CMVJoc0syWGxQVlQ1dHdNWTloeG5vRE8KdnNlMUU0WGJocXVTU0dwZnZEWjZ4SGROSFlsd2FBOGN1VUQzLzBMelNPdTdrM3N3ay92R1l1aXBmS0MwVTUrcQphUExOUnkwPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    rules:
+      - apiGroups:
+          - ""
+        apiVersions:
+          - v1
+        resources:
+          - pods
+        operations:
+          - CREATE
+    failurePolicy: Ignore

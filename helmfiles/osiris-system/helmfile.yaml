@@ -1,3 +1,18 @@
+filepath: ""
+environments:
+  default:
+    values:
+    - jx-values.yaml
 namespace: osiris-system
+repositories:
+- name: osiris
+  url: https://dailymotion-oss.github.io/osiris/charts
 releases:
 - chart: osiris/osiris
+  version: 0.0.48
+  name: osiris
+  values:
+  - ../../versionStream/charts/osiris/osiris/values.yaml.gotmpl
+  - jx-values.yaml
+templates: {}
+renderedvalues: {}

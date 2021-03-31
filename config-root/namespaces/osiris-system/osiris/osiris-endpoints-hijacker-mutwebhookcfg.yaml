@@ -1,0 +1,31 @@
+# Source: osiris/templates/endpoints-hijacker-webhook-config.yaml
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: osiris-endpoints-hijacker
+  labels:
+    app.kubernetes.io/name: osiris-endpoints-hijacker
+    helm.sh/chart: osiris-0.0.48
+    app.kubernetes.io/instance: osiris
+    app.kubernetes.io/managed-by: Helm
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+  namespace: osiris-system
+webhooks:
+  - name: endpoints-hijacker.osiris.dm.gg
+    clientConfig:
+      service:
+        namespace: osiris-system
+        name: osiris-endpoints-hijacker
+        path: "/mutate"
+      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURPakNDQWlLZ0F3SUJBZ0lSQUlTVjI5UzBiRnA4T1FsMlJXOG5zN1F3RFFZSktvWklodmNOQVFFTEJRQXcKSnpFbE1DTUdBMVVFQXhNY2IzTnBjbWx6TFdWdVpIQnZhVzUwY3kxb2FXcGhZMnRsY2kxallUQWVGdzB5TVRBegpNekV3T0RBNU5ETmFGdzB6TVRBek1qa3dPREE1TkROYU1DY3hKVEFqQmdOVkJBTVRIRzl6YVhKcGN5MWxibVJ3CmIybHVkSE10YUdscVlXTnJaWEl0WTJFd2dnRWlNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUIKQVFDeXByVENxell2UVJtOWVvV003eDNiRlNqMHFuZFJvOVdrWU9XcXczVTZVeTFhc013QmNoVmNqZjh5M2hhTgovUjJTeTFOSzJBa25iV1grQ1RBV1lGY3hDU2RvcjQ4cmZpMFZXMWFwUjlFejdWS2IyT3B6Um55NGh4TmFlWVVGCmRKTFgvU1c2dFlSYjZoYkN1Z1AvbzVOK0JZcmg3aUJFeHNJdnIzbWlrZ2RYT1dXclVDSVRtVWpSeCtTejJhWnYKRy9uczFWOWliMmdxQjNnQnM3YTMzTFgyT1hITXJQVGl1NkNiQUhlb0dwc3BEdW9LdElzQld6TmQxMk44dmtVTQpUeitaS044RDJJVmJyVEcydk9kbU9qaUZoYlpoeTJqekFNeW8zOE5ocEc2cUNmNGxkN1dWNWhXcmUveTcwN3pzCnBJL1JCcXB2cXhWN2p3ZDFtcEs2M1BIbkFnTUJBQUdqWVRCZk1BNEdBMVVkRHdFQi93UUVBd0lDcERBZEJnTlYKSFNVRUZqQVVCZ2dyQmdFRkJRY0RBUVlJS3dZQkJRVUhBd0l3RHdZRFZSMFRBUUgvQkFVd0F3RUIvekFkQmdOVgpIUTRFRmdRVUx3TFVrZ1FJZjhmaUlRV2xqNmpUK29rb3k0QXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBSWdsCkZzUjZZUTl5cFQ4MVQxS2ZFL0V0bzRORFFpbXBscjRmZGMzdHJmcjhuQ25hQTRoTGdtNVRCdEZKb3F2RjEycFgKeTZtWVF0Zk8xWnN2K0pqcC92c2R2MWhDb1JxV3Z4bkVPYStxMEJpSnVSUlNJRlA2cWdrd1ExYVpTdUZpQzNqagpBd09OWFJ5RlE1T3AyOUlaUGI2czFGNFJobVdQTWhRSTRjZE5EWldGVElOZXEwTHRObCtTaEY1djA3VkNDTEY3CmJGT3o1TmFzcDRzNWhSZXhvcEJ6S3o5eFlMUWFCd3FUWnY3U2o0S0NNc0gvc1kxQ1hmMWxoSzZxek5sbU1oM3oKV3pUbXdXZ3V4Ujc1RkgvdCtlTkp3T2IzSUVzWHByYW9xZlM5QkRTcGR6MEZtd0N6YkJJb1JiSVkydnhZU1dNcQpGUU81TkJwbkpsalZxeEV0Uk1rPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    rules:
+      - apiGroups:
+          - ""
+        apiVersions:
+          - v1
+        resources:
+          - services
+        operations:
+          - CREATE
+          - UPDATE
+    failurePolicy: Ignore

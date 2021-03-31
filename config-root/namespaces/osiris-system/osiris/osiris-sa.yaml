@@ -1,0 +1,12 @@
+# Source: osiris/templates/service-account.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: osiris
+  labels:
+    app.kubernetes.io/name: osiris
+    helm.sh/chart: osiris-0.0.48
+    app.kubernetes.io/instance: osiris
+    app.kubernetes.io/managed-by: Helm
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+  namespace: osiris-system

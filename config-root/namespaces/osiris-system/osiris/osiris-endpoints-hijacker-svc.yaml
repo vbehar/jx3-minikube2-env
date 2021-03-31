@@ -1,0 +1,22 @@
+# Source: osiris/templates/endpoints-hijacker-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: osiris-endpoints-hijacker
+  labels:
+    app.kubernetes.io/name: osiris-endpoints-hijacker
+    helm.sh/chart: osiris-0.0.48
+    app.kubernetes.io/instance: osiris
+    app.kubernetes.io/managed-by: Helm
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+  namespace: osiris-system
+spec:
+  type: ClusterIP
+  ports:
+    - port: 443
+      targetPort: https
+      protocol: TCP
+      name: https
+  selector:
+    app.kubernetes.io/name: osiris-endpoints-hijacker
+    app.kubernetes.io/instance: osiris

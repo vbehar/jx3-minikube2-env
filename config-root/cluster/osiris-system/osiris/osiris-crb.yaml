@@ -1,0 +1,19 @@
+# Source: osiris/templates/cluster-role-binding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: osiris
+  labels:
+    app.kubernetes.io/name: osiris
+    helm.sh/chart: osiris-0.0.48
+    app.kubernetes.io/instance: osiris
+    app.kubernetes.io/managed-by: Helm
+    gitops.jenkins-x.io/pipeline: 'cluster'
+subjects:
+  - kind: ServiceAccount
+    name: osiris
+    namespace: osiris-system
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: osiris

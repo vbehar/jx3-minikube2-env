@@ -1,0 +1,66 @@
+# Source: osiris/templates/endpoints-hijacker-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: osiris-endpoints-hijacker
+  labels:
+    app.kubernetes.io/name: osiris-endpoints-hijacker
+    helm.sh/chart: osiris-0.0.48
+    app.kubernetes.io/instance: osiris
+    app.kubernetes.io/managed-by: Helm
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+  namespace: osiris-system
+  annotations:
+    wave.pusher.com/update-on-config-change: 'true'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: osiris-endpoints-hijacker
+      app.kubernetes.io/instance: osiris
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: osiris-endpoints-hijacker
+        app.kubernetes.io/instance: osiris
+        releaseRevision: "1"
+    spec:
+      serviceAccountName: osiris
+      containers:
+        - name: endpoints-hijacker
+          image: ghcr.io/dailymotion-oss/osiris:0.0.48
+          securityContext:
+            runAsUser: 1000
+          command:
+            - /osiris/bin/osiris
+          args:
+            - --logtostderr=true
+            - endpoints-hijacker
+          env:
+            - name: TLS_CERT_FILE
+              value: /osiris/cert/tls.crt
+            - name: TLS_KEY_FILE
+              value: /osiris/cert/tls.key
+          ports:
+            - name: https
+              containerPort: 5000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              port: https
+              scheme: HTTPS
+              path: /healthz
+          readinessProbe:
+            httpGet:
+              port: https
+              scheme: HTTPS
+              path: /healthz
+          volumeMounts:
+            - name: cert
+              mountPath: /osiris/cert
+              readOnly: true
+          resources: {}
+      volumes:
+        - name: cert
+          secret:
+            secretName: osiris-endpoints-hijacker-cert
