@@ -9,7 +9,7 @@
     - name: bucketrepo
       url: http://bucketrepo-jx.192.168.64.8.nip.io/
     - name: hook
-      url: http://hook-jx.192.168.64.8.nip.io/hook
+      url: http://2d2bcc771667.ngrok.io/hook
     name: jxboot-helmfile-resources
     repositoryName: jx3
     repositoryUrl: https://storage.googleapis.com/jenkinsxio/charts
@@ -232,20 +232,6 @@
     - https://github.com/kubernetes/kube-state-metrics
     type: application
     version: 13.6.0
-- namespace: osiris-system
-  path: helmfiles/osiris-system/helmfile.yaml
-  releases:
-  - apiVersion: v1
-    appVersion: 0.0.48
-    description: A general purpose, scale-to-zero component for Kubernetes
-    home: https://github.com/dailymotion-oss/osiris
-    name: osiris
-    repositoryName: osiris
-    repositoryUrl: https://dailymotion-oss.github.io/osiris/charts
-    resourcePath: config-root/namespaces/osiris-system/osiris
-    sources:
-    - https://github.com/dailymotion-oss/osiris
-    version: 0.0.48
 - namespace: tekton-pipelines
   path: helmfiles/tekton-pipelines/helmfile.yaml
   releases:

@@ -110,15 +110,6 @@
 	      <td><a href='https://prometheus.io/'>source</a></td>
 	    </tr>
     <tr>
-		      <td colspan='4'><h3>osiris-system</h3></td>
-		    </tr>
-	    <tr>
-	      <td><a href='https://github.com/dailymotion-oss/osiris' title='A general purpose, scale-to-zero component for Kubernetes'> <img src='' width='24px' height='24px'> osiris </a></td>
-	      <td>0.0.48</td>
-	      <td></td>
-	      <td><a href='https://github.com/dailymotion-oss/osiris'>source</a></td>
-	    </tr>
-    <tr>
 		      <td colspan='4'><h3>tekton-pipelines</h3></td>
 		    </tr>
 	    <tr>
