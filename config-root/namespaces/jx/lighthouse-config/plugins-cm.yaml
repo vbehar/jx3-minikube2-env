@@ -15,6 +15,10 @@ data:
           name: config
         env/prow/plugins.yaml:
           name: plugins
+    external_plugins:
+      vbehar/jx3-minikube2-env:
+      - endpoint: http://cd-indicators.jx.svc.cluster.local/lighthouse/events
+        name: cd-indicators
     heart: {}
     label:
       additional_labels: null
